@@ -1,0 +1,53 @@
+{
+  "name": "lit-light-components",
+  "version": "0.0.1",
+  "description": "Component library build on native browser standards",
+  "main": "index.html",
+  "scripts": {
+    "lint:eslint": "eslint --ext .js ./src --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js ./src --fix --ignore-path .gitignore",
+    "lint": "npm run lint:eslint",
+    "format": "npm run format:eslint",
+    "stylus": "stylus src/**/*.styl",
+    "stylus:watch": "stylus src/**/*.styl -w",
+    "analyze": "wca analyze ./src --outFile custom-elements.json --format json",
+    "local-server": "es-dev-server --app-index index.html --node-resolve --open",
+    "local-server:watch": "es-dev-server --app-index index.html --node-resolve --open --watch",
+    "start": "npm run analyze && npm run local-server:watch",
+    "start:compatibility": "npm run analyze && es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch"
+  },
+  "dependencies": {
+    "lit-element-light": "0.0.1"
+  },
+  "devDependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "api-viewer-element": "^0.2.6",
+    "es-dev-server": "^1.5.0",
+    "eslint": "^6.6.0",
+    "husky": "^3.0.9",
+    "stylus": "^0.54.7",
+    "web-component-analyzer": "^0.1.20",
+    "web-component-tester": "^6.9.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SPrinss/lit-light-components.git"
+  },
+  "keywords": [
+    "custom-elements",
+    "web-components",
+    "lit-html",
+    "lit-light"
+  ],
+  "author": "Wouter Vroege & Sam Prinssen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SPrinss/lit-light-components/issues"
+  },
+  "homepage": "https://github.com/SPrinss/lit-light-components#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
+    }
+  }
+}

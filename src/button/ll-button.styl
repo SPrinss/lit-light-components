@@ -1,0 +1,74 @@
+@import './base-style-variables/typography.styl'
+@import './base-style-variables/colors.styl'
+@import './base-style-variables/gradients.styl'
+@import './base-style-variables/shadows.styl'
+@import './base-style-variables/border-radius.styl'
+
+:host 
+  display block
+
+button
+  ButtonText()
+  border 2px solid var(--ll-button-border-color, transparent)
+  border-radius var(--ll-button-border-radius, BorderRadiusXl)
+  color var(--ll-button-text-color, white)
+  background var(--ll-button-fill, GradientGreenblue)
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  height '60px'
+  outline none
+  cursor pointer
+  user-select none
+  transition: 0.2s box-shadow ease, 0.2s color ease, 0.2s background-color ease
+
+:host button, 
+:host([small]) button 
+  display flex
+  text-align var(--ll-button-text-align, center)
+  --ll-icon-color var(--ll-button-text-color, white)
+
+:host([small]) button 
+    height '50px'
+    BodyText()
+
+:host([no-label]) 
+  width 60px
+
+:host([small][no-label]) 
+  width 50px
+
+button:active 
+  border-color var(--ll-button-border-color--active, ColorWhite)
+  color var(--ll-button-text-color--active, ColorWhite)
+  --ll-icon-color var(--ll-button-text-color--active, ColorWhite)
+  background var(--ll-button-fill--active, GradientGreenblue)
+
+:host([disabled])
+  opacity 0.5
+  pointer-events none
+  cursor default
+  
+:host([disabled]) button
+  color var(--ll-button-text-color--disabled, ColorWhite)
+  --ll-icon-color var(--ll-button-text-color--disabled, ColorWhite)
+
+:host([raised]) button
+  box-shadow DropShadow
+  border-color transparent
+
+:host([raised]) button:active 
+  border-color var(--ll-button-border-color--active, transparent)
+  box-shadow none
+  transform translate(2px, 2px)
+  
+span
+  flex 1
+
+ll-icon
+  flex none
+  padding-right 6px
+
+:host([no-label]) ll-icon
+  padding-right 0
