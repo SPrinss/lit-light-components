@@ -1,0 +1,5 @@
+{
+  "description": "Lit light Card Component",
+  "main": "ll-card.js",
+  "module": "ll-card.js"
+}

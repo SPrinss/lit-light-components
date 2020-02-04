@@ -1,0 +1,5 @@
+{
+  "description": "Lit light Progress Bar Component",
+  "main": "ll-progress-bar.js",
+  "module": "ll-progress-bar.js"
+}

@@ -1,0 +1,5 @@
+{
+  "description": "Lit light Text Input Component",
+  "main": "ll-text-input.js",
+  "module": "ll-text-input.js"
+}

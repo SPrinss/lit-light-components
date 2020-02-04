@@ -1,0 +1,5 @@
+{
+  "description": "Lit light Selector Component",
+  "main": "ll-selector.js",
+  "module": "ll-selector.js"
+}

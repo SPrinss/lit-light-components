@@ -1,7 +1,8 @@
-import { LitElementLight, html } from 'lit-element-light';
+import { LitElement, html, css } from 'lit-element';
+import { DropShadows, Gradients, Colors, ButtonText, BodyText, BorderRadius, ButtonStyles } from '../styles';
 
 /**
- * Lit light UI Button Component
+ * Lit light Button Component
  * @element ll-button
 
  * @cssprop --ll-button-text-align - Text Align
@@ -18,7 +19,7 @@ import { LitElementLight, html } from 'lit-element-light';
  * @cssprop --ll-button-text-color--disabled - Text Color for disabled State
  * @cssprop --ll-button-fill--disabled - Background Color for disabled State
  */
-class Main extends LitElementLight {
+class Main extends LitElement {
 
   static get properties() {
     return { 
@@ -92,19 +93,118 @@ class Main extends LitElementLight {
 
   }
 
-  get template() {
-    return html`
-      <link rel="stylesheet" href="./src/button/ll-button.css">
+  static get styles() {
+    return css`
+      :host {
+        display: block;
+      }
 
+      :host button, :host([small]) button {
+        display: flex;
+        text-align: var(--ll-button-text-align, center);
+        --ll-icon-color: var(--ll-button-text-color, white);
+        padding: 0 15px;
+      }
+
+      :host([no-label]) {
+        width: 54px;
+      }
+
+      :host([small][no-label]) {
+        width: 48px;
+      }
+
+      button:active {
+        border-color: var(--ll-button-border-color--active, var(--ll-color-white));
+        color: var(--ll-button-text-color--active, var(--ll-color-white));
+        --ll-icon-color: var(--ll-button-text-color--active, var(--ll-color-white));
+        background: var(--ll-button-fill--active, var(--ll-gradient-greenblue));
+      }
+
+      button:focus:not(:active) {
+      }
+
+      :host([disabled]) {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: default;
+      }
+
+      :host([disabled]) button {
+        color: var(--ll-button-text-color--disabled, var(--ll-color-white));
+        --ll-icon-color: var(--ll-button-text-color--disabled, var(--ll-color-white));
+      }
+
+      :host([raised]) button {
+        box-shadow: var(--ll-drop-shadow-1);
+        border-color: transparent;
+      }
+
+      :host([raised]) button:active {
+        border-color: var(--ll-button-border-color--active, transparent);
+        box-shadow: none;
+        transform: translate(0px, 2px);
+      }
+        
+      span {
+        flex: 1;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 1.25;
+      }
+
+      span + ll-icon {
+        padding-left: 8px;
+      }
+
+      ll-icon {
+        flex: none;
+      }
+
+      :host([no-label]) span {
+        display: none;
+        padding: 0;
+      }
+
+      :host([no-label]) ll-icon {
+        padding: 0;
+      }
+
+    `;
+  }
+
+  render() {
+    return html`
+      <style>
+        
+        :host {
+          ${Colors}
+          ${Gradients}
+          ${BorderRadius}
+          ${DropShadows}
+        }
+
+        button {
+          ${ButtonText}
+          ${BorderRadius}
+          ${ButtonStyles()}
+        }
+
+        :host([small]) button {
+          ${BodyText}
+          ${ButtonStyles('small')}
+        }
+
+      </style>
       <button>
-        ${this.noLabel ? html`` : html`<span>${this.label}</span>` }
-        <!-- ${this.icon ? html`<ll-icon .icon="${this.icon}"></ll-icon>` : html`` } -->
-      </button>
+        <span>${this.label}</span>
+        ${this.icon ? html`<ll-icon .icon="${this.icon}"></ll-icon>` : html`` }
+    </button>
     `;
   }
 
   updated(props) {
-    super.updated(props)
     if(props.has('icon') && !!this.icon) import('../icon');
     this.noLabel = !this.label;
   }
