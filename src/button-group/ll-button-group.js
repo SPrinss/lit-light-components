@@ -1,5 +1,4 @@
-import { LitElement, html, css} from 'lit-element';
-import { Sizings, Colors } from '../styles';
+import { LitElementLight, html } from 'lit-element-light';
 import '../selector';
 import '../button';
 
@@ -11,7 +10,7 @@ import '../button';
  * 
  * @cssprop --ll-button-group-cols - Number of columns when display == `grid`
  */
-export class Main extends LitElement {
+export class Main extends LitElementLight {
 
   static get properties() {
     return {
@@ -76,76 +75,29 @@ export class Main extends LitElement {
   }
 
   updated() {
+    super.updated();
     this.style.setProperty('--ll-button-group-numitems', this.options.length);
   }
 
-  static get styles() {
-    return css`
-      
-      :host {
-        display: block;
-        --ll-button-group-gap-size: var(--ll-margin--medium);
-      }
-
-      :host([switch]) ll-selector {
-        border: 2px solid var(--ll-color-green);
-        padding: 0;
-        border-radius: 5px;
-        overflow: hidden;
-        --ll-button-group-gap-size: 0;
-      }
-
-      ll-selector {
-        display: var(--ll-button-group-display, block);
-        grid-template-columns: repeat(var(--ll-button-group-cols, var(--ll-button-group-numitems)), 1fr);
-        grid-gap: var(--ll-button-group-gap-size, var(--ll-margin--medium));
-      }
-
-      ll-button {
-        --ll-button-border-radius: var(--ll-border-radius);
-        --ll-button-text-color: var(--ll-color-black);
-        --ll-button-text-color--active: var(--ll-color-black);
-        --ll-button-fill: white;
-        margin: 0;
-      }
-
-      :host([switch]) ll-button {
-        --ll-border-radius: 0;        
-        margin: 0;
-      }
-
-      ll-button.ll-selected {
-        --ll-button-fill: var(--ll-gradient-greenblue);
-        --ll-button-text-color: white;
-        --ll-button-text-color--active: white;
-      }
-
-    `;
-  }
-
-  render() {
+  get template() {
     return html`
-      <style>
-        :host {
-          ${Sizings}
-          ${Colors}
-        }
-      </style>
+      <link rel="stylesheet" href="./src/button-group/ll-button-group.css">
+
       <ll-selector
         .multi="${this.multi}"
         .values="${this.selectedValues}"
         @values-changed="${this._valuesChanged}"
       >
         ${this.options.map(item => {
-    return html`
-            <ll-button
-              .label="${item.label}"
-              .value="${item.value}"
-              ?small="${this.small}"
-            ></ll-button>
-          `;
-  })}
-    </ll-selector>
+          return html`
+                  <ll-button
+                    .label="${item.label}"
+                    .value="${item.value}"
+                    ?small="${this.small}"
+                  ></ll-button>
+                `;
+        })}
+      </ll-selector>
     `;
   }
 
