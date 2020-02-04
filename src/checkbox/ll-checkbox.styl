@@ -1,0 +1,27 @@
+@import '../shared-styles/border-radius.styl'
+@import '../shared-styles/colors.styl'
+@import '../shared-styles/typography.styl'
+
+label 
+  BodyText()
+
+:host 
+  display flex
+  align-items center
+  cursor pointer
+  outline none
+
+ll-button 
+  display flex
+  align-items center
+  justify-content center
+  --ll-button-fill var(--ll-checkbox-fill, white)
+  --ll-button-text-color var(--ll-checkbox-color, ColorGreen)
+  --ll-button-border-radius BorderRadiusM
+  padding 0
+      
+label 
+  padding-left 9px
+  user-select none
+  cursor pointer
+  color var(--ll-checkbox-color, ColorBlack)

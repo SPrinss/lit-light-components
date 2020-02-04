@@ -8,4 +8,3 @@ export { LLPage } from './page';
 export { LLButtonGroup } from './button-group';
 export { LLCheckbox } from './checkbox';
 export { LLCard } from './card';
-export { Colors } from './styles';
