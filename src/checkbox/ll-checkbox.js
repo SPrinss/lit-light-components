@@ -1,5 +1,4 @@
-import { LitElement, html, css } from 'lit-element';
-import { Colors, BodyText, BorderRadius } from '../styles';
+import { LitElementLight, html } from 'lit-element-light';
 import '../button';
 import '../icon';
 
@@ -11,7 +10,7 @@ import '../icon';
  * @cssprop --ll-checkbox-color - Checkbox Tint Color
  * 
 */
-class Main extends LitElement {
+class Main extends LitElementLight {
 
   static get properties() {
     return { 
@@ -43,7 +42,6 @@ class Main extends LitElement {
     this.label = 'My Label';
 
     this.addEventListener('click', this._handleClick.bind(this));
-
   }
 
   connectedCallback() {
@@ -52,55 +50,20 @@ class Main extends LitElement {
   }
 
   updated(props) {
+    super.updated(props);
     if(props.has('checked')) this.dispatchEvent(new CustomEvent('checked-changed', {detail: {value: this.checked}}));
   }
 
-  static get styles() {
-    return css`
-      :host {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        outline: none;
-      }
-
-      ll-button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        --ll-button-fill: white;
-        --ll-button-text-color: var(--ll-color-green);
-        --ll-button-border-radius: var(--ll-border-radius);
-        padding: 0;
-      }
-
-      label {
-        padding-left: 9px;
-        user-select: none;
-        cursor: pointer;
-        color: var(--ll-checkbox-color, var(--ll-color-black));
-      }
-    `;
-  }
-
-  render() {
+  get template() {
     return html`
-      <style>
-        :host {
-          ${BorderRadius}
-          ${Colors}
-        }
+      <link rel="stylesheet" href="./src/checkbox/ll-checkbox.css">
 
-        label {
-          ${BodyText}
-        }
-      </style>
       <div>
-      <ll-button
-        small
-        .icon="${this.checked ? 'done' : ''}"
-        label=""
-      ></ll-button>
+        <ll-button
+          small
+          .icon="${this.checked ? 'done' : ''}"
+          label=""
+        ></ll-button>
       </div>
       <label>${this.label}</label>
     `;
