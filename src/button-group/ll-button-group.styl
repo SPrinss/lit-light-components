@@ -6,10 +6,10 @@
 
 :host 
   display block
-  --ll-button-group-gap-size var(--ll-margin--medium, MarginMedium)
+  --ll-button-group-gap-size MarginMedium
 
 :host([switch]) ll-selector 
-  border 2px solid var(--ll-color-green, ColorGreen)
+  border 2px solid ColorGreen
   padding 0
   border-radius 5px
   overflow hidden
@@ -18,12 +18,12 @@
 ll-selector 
   display var(--ll-button-group-display, block)
   grid-template-columns repeat(var(--ll-button-group-cols, var(--ll-button-group-numitems)), 1fr)
-  grid-gap var(--ll-button-group-gap-size, var(--ll-margin--medium, MarginMedium))
+  grid-gap var(--ll-button-group-gap-size, MarginMedium)
 
 ll-button 
-  --ll-button-border-radius var(--ll-border-radius, BorderRadiusM)
-  --ll-button-text-color var(--ll-color-black, ColorBlack)
-  --ll-button-text-color--active var(--ll-color-black, ColorBlack)
+  --ll-button-border-radius BorderRadiusM
+  --ll-button-text-color ColorBlack
+  --ll-button-text-color--active ColorBlack
   --ll-button-fill white
   margin 0
 
@@ -32,6 +32,6 @@ ll-button
   margin 0
 
 ll-button.ll-selected 
-  --ll-button-fill var(--ll-gradient-greenblue, Gradient(ColorGreen, ColorBlue))
+  --ll-button-fill Gradient(ColorGreen, ColorBlue)
   --ll-button-text-color white
   --ll-button-text-color--active white
