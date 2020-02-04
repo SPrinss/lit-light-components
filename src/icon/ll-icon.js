@@ -33,7 +33,7 @@ class Main extends UpdatingElement {
   render(viewboxValue, svgIcon) {
     this._shadowRoot.innerHTML = `
       <link rel="stylesheet" href="src/icon/ll-icon.css">
-      <svg viewBox="${viewboxValue || '0 0 24 24'}" id="slicesui-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg viewBox="${viewboxValue || '0 0 24 24'}" id="ll-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         ${svgIcon}
       </svg>
     `;
