@@ -1,0 +1,86 @@
+@import '../shared-styles/colors.styl'
+@import '../shared-styles/gradients.styl'
+@import '../shared-styles/border-radius.styl'
+@import '../shared-styles/shadows.styl'
+@import '../shared-styles/typography.styl'
+
+:host()
+  display block
+
+button 
+  ButtonText()
+  border-radius BorderRadiusM
+  border 2px solid outset var(--ll-button-border-color, transparent)
+  border-radius var(--ll-button-border-radius, BorderRadiusXl)
+  color var(--ll-button-text-color, white)
+  background var(--ll-button-fill, GradientGreenblue)
+  display flex
+  justify-content center
+  align-items center
+  width 100%
+  height 54px
+  outline none
+  cursor pointer
+  user-select none
+  transition 0.2s box-shadow ease, 0.2s color ease, 0.2s background-color ease
+  margin 0
+
+:host([small]) button
+  ButtonText()
+  height 48px
+
+button, :host([small]) button
+  display flex
+  text-align var(--ll-button-text-align, center)
+  --ll-icon-color var(--ll-button-text-color, white)
+  padding 0 15px
+
+:host([no-label]) 
+  width 54px
+
+:host([small][no-label]) 
+  width 48px
+
+button:active 
+  border-color var(--ll-button-border-color--active, ColorWhite)
+  color var(--ll-button-text-color--active, ColorWhite)
+  --ll-icon-color var(--ll-button-text-color--active, ColorWhite)
+  background var(--ll-button-fill--active, GradientGreenblue)
+
+:host([disabled]) 
+  opacity 0.5
+  pointer-events none
+  cursor default
+
+:host([disabled]) button 
+  color var(--ll-button-text-color--disabled, ColorWhite)
+  --ll-icon-color var(--ll-button-text-color--disabled, ColorWhite)
+
+:host([raised]) button 
+  box-shadow DropShadow
+  border-color transparent
+
+:host([raised]) button:active 
+  border-color var(--ll-button-border-color--active, transparent)
+  box-shadow none
+  transform translate(0px, 2px)
+  
+span 
+  flex 1
+  white-space nowrap
+  text-overflow ellipsis
+  overflow hidden
+  line-height 1.25
+
+span + ll-icon 
+  padding-left 8px
+
+ll-icon 
+  flex none
+
+:host([no-label]) span 
+  display none
+  padding 0
+
+:host([no-label]) ll-icon 
+  padding 0
