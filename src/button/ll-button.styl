@@ -10,7 +10,7 @@
 button 
   ButtonText()
   border-radius BorderRadiusM
-  border 2px solid outset var(--ll-button-border-color, transparent)
+  border 2px solid var(--ll-button-border-color, transparent)
   border-radius var(--ll-button-border-radius, BorderRadiusXl)
   color var(--ll-button-text-color, white)
   background var(--ll-button-fill, Gradient(ColorGreen, ColorBlue))
@@ -53,6 +53,8 @@ button:active
   cursor default
 
 :host([disabled]) button 
+  border-color var(--ll-button-border-color--disabled, transparent)
+  background var(--ll-button-fill--disabled, transparent)
   color var(--ll-button-text-color--disabled, ColorWhite)
   --ll-icon-color var(--ll-button-text-color--disabled, ColorWhite)
 
