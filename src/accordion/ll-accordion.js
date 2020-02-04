@@ -1,6 +1,5 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html } from 'lit-element';
 import {unsafeHTML} from 'lit-html/directives/unsafe-html.js';
-import { Colors } from '../styles';
 import '../button';
 
 /**
@@ -30,68 +29,9 @@ class Main extends LitElement {
     };
   }
 
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-        border-bottom: 1px solid var(--ll-color-black);
-      }
-
-      ll-button {
-        --ll-button-text-align: start;
-        --ll-button-fill: transparent;
-        --ll-button-text-color: var(--ll-color-black);
-        --ll-button-border-radius: 0;
-        --ll-button-border-color: transparent;
-        --ll-button-border-color--active: transparent;
-        border: 1px solid var(--ll-color-black);
-        display: block;
-        margin-bottom: -1px;
-      }
-
-      ll-button:hover {
-        --ll-button-fill: var(--ll-color-yellow);
-      }
-
-      ll-button[data-opened] {
-        border-bottom: 0;
-        --ll-button-fill: var(--ll-color-yellow);
-      }
-
-      #slotContainer {
-        display: none;
-      }
-
-      .container {
-        background-color: var(--ll-color-yellow);
-        overflow: hidden;
-        height: 0px;
-        width: 100%;
-        transition: 0.5s height ease;
-        box-sizing: border-box;
-      }
-
-      .container > * {
-        padding: 16px;
-      }
-
-      .container[data-opened] {
-        height: var(--container-height);
-        border-left: 1px solid var(--ll-color-black);
-        border-right: 1px solid var(--ll-color-black);
-      }
-
-    `;
-  }
-
   render() {
     return html`
-      <style>
-        :host {
-          ${Colors}
-        }
-      </style>
-
+      <link rel="stylesheet" href="./src/accordion/ll-accordion.css">
       ${this.values.map((val, i) => html`
         <ll-button
           small
@@ -125,13 +65,7 @@ class Main extends LitElement {
 
     this._children = [];
 
-    this.shadowRoot.addEventListener('slotchange', (e) => {
-      const nodes = Array.from(e.target.assignedNodes());
-      const children = nodes.filter(item => item.dataset && !!item.dataset.accname);
-      const values = children.map(item => item.dataset.accname);
-      this.values = [...values];
-      this._children = [...children];
-    });
+    this.shadowRoot.addEventListener('slotchange', this._childrenChanged.bind(this));
   }
 
   updated(props) {
@@ -152,6 +86,13 @@ class Main extends LitElement {
     const oldVal = this._values;
     this._values = [...values];
     this.requestUpdate('values', oldVal);
+  }
+
+  _childrenChanged(e) {
+    const children = e.target.assignedNodes().filter(item => item.dataset && !!item.dataset.accname);
+    const values = children.map(item => item.dataset.accname);
+    this.values = [...values];
+    this._children = [...children];
   }
 
   _handleButtonClick(evt) {

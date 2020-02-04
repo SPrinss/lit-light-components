@@ -118,11 +118,11 @@ class Main extends LitElementLight {
   }
 
   _childrenChanged(children, oldValues) {
-    oldValues.map(item => {
+    (oldValues || []).map(item => {
       const itemIsDeleted = children.indexOf(item) === -1;
       if(itemIsDeleted) this._removeClickEvent(item);
     });
-    children.map(item => {
+    (children || []).map(item => {
       const itemIsAdded = oldValues.indexOf(item) === -1;
       if(itemIsAdded) this._addClickEvent(item);
     });
