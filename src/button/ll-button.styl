@@ -13,7 +13,7 @@ button
   border 2px solid outset var(--ll-button-border-color, transparent)
   border-radius var(--ll-button-border-radius, BorderRadiusXl)
   color var(--ll-button-text-color, white)
-  background var(--ll-button-fill, GradientGreenblue)
+  background var(--ll-button-fill, Gradient(ColorGreen, ColorBlue))
   display flex
   justify-content center
   align-items center
@@ -45,7 +45,7 @@ button:active
   border-color var(--ll-button-border-color--active, ColorWhite)
   color var(--ll-button-text-color--active, ColorWhite)
   --ll-icon-color var(--ll-button-text-color--active, ColorWhite)
-  background var(--ll-button-fill--active, GradientGreenblue)
+  background var(--ll-button-fill--active, Gradient(ColorGreen, ColorBlue))
 
 :host([disabled]) 
   opacity 0.5
