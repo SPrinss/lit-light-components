@@ -1,5 +1,4 @@
-import { LitElement, html, css} from 'lit-element';
-import { Colors, InputStyles, BodyText } from '../styles';
+import { LitElementLight, html } from 'lit-element-light';
 
 /**
  * Conamore UI Text Input Component
@@ -15,7 +14,7 @@ import { Colors, InputStyles, BodyText } from '../styles';
  * @fires invalid-changed - Event fired when invalid is changed
  * 
  */
-export class Main extends LitElement {
+export class Main extends LitElementLight {
 
   static get properties() {
     return {
@@ -113,74 +112,9 @@ export class Main extends LitElement {
     this.invalid = this.getInvalid;
   }
 
-  static get styles() {
-    return css`
-      :host {
-        display: block;
-        position: relative;
-      }
-
-      input {
-        -webkit-appearance: none;
-        box-sizing: border-box;
-        padding: 0;
-        border-radius: 0;
-        display: block; 
-        border-bottom: 2px solid var(--ll-text-input-border-color, var(--ll-color-grey));
-        transition: 0.5s border-bottom-color;
-        background: transparent;
-      }
-
-      label {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        opacity: 0.5;
-        color: --ll-color-black;
-        user-select: none;
-        pointer-events: none;
-        transition: 0.3s transform ease;
-        transform-origin: 0 0;
-        transform: none;
-      }
-
-      input:focus {
-        border-bottom-color: var(--ll-text-input-border-color--focus, var(--ll-color-black));
-      }
-
-      input:not([value='']) + label {
-        transform: scale(0.8) translateY(-24px);
-        border-bottom-color: var(--ll-text-input-border-color--not-empty, var(--ll-color-black));
-      }
-
-      :host([disabled]) {
-        opacity: 0.5;
-        pointer-events: none;
-        user-select: none;
-        cursor: default;
-      }
-
-      :host([invalid]) input {
-        border-bottom-color: var(--ll-text-input-border-color--invalid, var(--ll-color-red));
-      }
-
-    `;
-  }
-
-  render() {
+  get template() {
     return html`
-      <style>
-        :host {
-          ${Colors}
-        }
-        input {
-          ${InputStyles}
-          ${BodyText}
-        }
-      </style>
+      <link rel="stylesheet" href="src/text-input/ll-input.css">
       <input
         type="${this.type}"
         value="${this.value}"

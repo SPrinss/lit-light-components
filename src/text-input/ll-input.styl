@@ -1,0 +1,50 @@
+@import '../shared-styles/colors'
+@import '../shared-styles/input-styles'
+@import '../shared-styles/typography'
+
+:host
+  display block
+  position relative
+
+input
+  InputStyles()
+  BodyText()
+  -webkit-appearance none
+  box-sizing border-box
+  padding 0
+  border-radius 0
+  display block 
+  border-bottom 2px solid var(--ll-text-input-border-color, ColorGrey)
+  transition 0.5s border-bottom-color
+  background transparent
+
+label
+  position absolute
+  top 0
+  height 100%
+  width 100%
+  display flex
+  align-items center
+  opacity 0.5
+  color var(--ll-color-black, ColorBlack)
+  user-select none
+  pointer-events none
+  transition 0.3s transform ease
+  transform-origin 0 0
+  transform none
+
+input:focus
+  border-bottom-color var(--ll-text-input-border-color--focus, ColorBlack)
+
+input:not([value='']) + label 
+  transform scale(0.8) translateY(-24px)
+  border-bottom-color var(--ll-text-input-border-color--not-empty, ColorBlack)
+
+:host([disabled])
+  opacity 0.5
+  pointer-events none
+  user-select none
+  cursor default
+
+:host([invalid]) input
+  border-bottom-color var(--ll-text-input-border-color--invalid, ColorRed)
