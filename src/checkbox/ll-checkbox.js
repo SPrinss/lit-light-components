@@ -1,4 +1,5 @@
 import { LitElementLight, html } from 'lit-element-light';
+import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer-mixin';
 import '../button';
 import '../icon';
 
@@ -10,7 +11,7 @@ import '../icon';
  * @cssprop --ll-checkbox-color - Checkbox Tint Color
  * 
 */
-class Main extends LitElementLight {
+class Main extends MultiPropertyObserver(LitElementLight) {
 
   static get properties() {
     return { 
@@ -44,14 +45,15 @@ class Main extends LitElementLight {
     this.addEventListener('click', this._handleClick.bind(this));
   }
 
+  get observers() {
+    return {
+      _checkedChanged: ['checked']
+    };
+  }
+
   connectedCallback() {
     super.connectedCallback();
     if(!this.hasAttribute('tabindex') && !this.disabled) this.setAttribute('tabindex', 0);    
-  }
-
-  updated(props) {
-    super.updated(props);
-    if(props.has('checked')) this.dispatchEvent(new CustomEvent('checked-changed', {detail: {value: this.checked}}));
   }
 
   get template() {
@@ -67,6 +69,10 @@ class Main extends LitElementLight {
       </div>
       <label>${this.label}</label>
     `;
+  }
+
+  _checkedChanged() {
+    this.dispatchEvent(new CustomEvent('checked-changed', {detail: {value: this.checked}}));
   }
 
   _handleClick() {

@@ -6,7 +6,7 @@ import { UpdatingElement } from 'lit-element';
  * 
  * @cssprop --ll-icon-color - Stroke Color
  */
-class Main extends UpdatingElement {
+export class LLIcon extends UpdatingElement {
 
   static get properties() {
     return {
@@ -113,6 +113,5 @@ class Main extends UpdatingElement {
 
 }
 
-export const LLIcon = Main;
 window.customElements.define('ll-icon', LLIcon);
 

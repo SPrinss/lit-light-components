@@ -4,12 +4,18 @@
     <script type="module">
       import 'api-viewer-element';
       import './src/index.js';
+      import './src/icon/ll-icon.js';
     </script>
   </head>
 
   <body>
-    <api-viewer src="./custom-elements.json" section="demo" selected="6">
+    <api-viewer src="./custom-elements.json" section="demo" selected="ll-accordion">
+
       
+        <template data-element="ll-icon" data-target="host">
+          <ll-icon icon="arrow-left"></ll-icon>
+        </template>
+
       <template data-element="ll-accordion">
         <article data-accname="Option one">Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.</article>
         <article data-accname="Option two">Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.</article>

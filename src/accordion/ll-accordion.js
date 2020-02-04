@@ -1,5 +1,6 @@
 import { LitElementLight, html } from 'lit-element-light';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html.js';
+import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer-mixin';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import '../button';
 
 /**
@@ -12,7 +13,7 @@ import '../button';
  * @fires selected-index-changed - Fires when a list item is opened or closed
  * 
  */
-class Main extends LitElementLight {
+class Main extends MultiPropertyObserver(LitElementLight) {
 
   static get properties() {
     return {
@@ -68,10 +69,11 @@ class Main extends LitElementLight {
     this.shadowRoot.addEventListener('slotchange', this._childrenChanged.bind(this));
   }
 
-  updated(props) {
-    if(props.has('selectedIndex')) this._selectedIndexChanged();
-    if(props.has('values')) this._valuesChanged();
-    super.updated(props);
+  get observers() {
+    return {
+      _selectedIndexChanged: ['selectedIndex'],
+      _valuesChanged: ['values'],
+    };
   }
 
   /**

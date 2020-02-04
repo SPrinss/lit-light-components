@@ -1,4 +1,5 @@
 import { LitElementLight, html } from 'lit-element-light';
+import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer-mixin';
 
 /**
  * Lit light Selector Component
@@ -6,7 +7,7 @@ import { LitElementLight, html } from 'lit-element-light';
  * @slot
  * 
 */
-class Main extends LitElementLight {
+class Main extends MultiPropertyObserver(LitElementLight) {
 
   static get properties() {
     return { 
@@ -84,6 +85,12 @@ class Main extends LitElementLight {
 
   }
 
+  get observers() {
+    return {
+      _valuesChanged: ['values', '_children']
+    };
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this._valuesChanged();
@@ -92,7 +99,6 @@ class Main extends LitElementLight {
   updated(props) {
     super.updated(props);
     if(props.has('_children')) this._childrenChanged(this._children, props.get('_children'));
-    if(props.has('values') || props.has('_children')) this._valuesChanged();
   }
 
   get template() {

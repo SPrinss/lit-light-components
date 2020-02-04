@@ -1,4 +1,5 @@
 import { LitElementLight, html } from 'lit-element-light';
+import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer-mixin';
 
 /**
  * Conamore UI Text Input Component
@@ -14,7 +15,7 @@ import { LitElementLight, html } from 'lit-element-light';
  * @fires invalid-changed - Event fired when invalid is changed
  * 
  */
-export class Main extends LitElementLight {
+export class Main extends MultiPropertyObserver(LitElementLight) {
 
   static get properties() {
     return {
@@ -78,10 +79,11 @@ export class Main extends LitElementLight {
     this.invalid = false;
   }
 
-  update(props) {
-    super.update(props);
-    if(props.has('value')) this._valueChanged();
-    if(props.has('invalid')) this._invalidChanged();
+  get observers() {
+    return {
+      _valueChanged: ['value'],
+      _invalidChanged: ['invalid']
+    };
   }
 
   get value() {

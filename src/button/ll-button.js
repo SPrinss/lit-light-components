@@ -1,4 +1,5 @@
 import { LitElementLight, html } from 'lit-element-light';
+import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer-mixin';
 
 /**
  * Lit light Button Component
@@ -18,7 +19,7 @@ import { LitElementLight, html } from 'lit-element-light';
  * @cssprop --ll-button-text-color--disabled - Text Color for disabled State
  * @cssprop --ll-button-fill--disabled - Background Color for disabled State
  */
-class Main extends LitElementLight {
+class Main extends MultiPropertyObserver(LitElementLight) {
 
   static get properties() {
     return { 
@@ -94,7 +95,6 @@ class Main extends LitElementLight {
   get template() {
     return html`
       <link rel="stylesheet" href="./src/button/ll-button.css">
-
       <button>
         <span>${this.label}</span>
         ${this.icon ? html`<ll-icon .icon="${this.icon}"></ll-icon>` : html`` }
@@ -102,10 +102,19 @@ class Main extends LitElementLight {
     `;
   }
 
-  updated(props) {
-    super.updated(props);
-    if(props.has('icon') && !!this.icon) import('../icon');
-    this.noLabel = !this.label;
+  get observers() {
+    return {
+      _iconChanged: ['icon'],
+      _labelChanged: ['label']
+    };
+  }
+
+  _iconChanged(icon) {
+    if(icon) import('../icon');
+  }
+
+  _labelChanged(label) {
+    this.noLabel = !label;
   }
 
   set noLabel(noLabel) {
