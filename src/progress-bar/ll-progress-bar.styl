@@ -1,0 +1,47 @@
+@import '../shared-styles/colors'
+@import '../shared-styles/border-radius'
+@import '../shared-styles/gradients'
+
+:host
+  display block
+
+#progress-bar
+  width 100%
+  height 100%
+  z-index 2
+  overflow hidden
+  display flex
+  padding 0 3px
+  margin 3px 0
+  box-sizing border-box
+  height var(--ll-progress-bar-height, 3px)
+
+span
+  flex 1
+  margin 0 3px
+  border-radius var(--ll-border-radius, BorderRadiusM)
+  overflow hidden
+  position relative
+
+:host([solid]) span
+  margin 0
+  border-radius 0
+
+span:before, span:after
+  width 100%
+  height 100%
+  top 0
+  left 0
+  content ''
+  position absolute
+
+span:before
+  opacity 0.35
+
+span:after
+  background var(--ll-progress-bar-color, Gradient(ColorGreen, ColorBlue))
+  opacity 0.1
+  transition 0.5s opacity ease-in-out
+
+span[data-active]:after
+  opacity 1
