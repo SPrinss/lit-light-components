@@ -1,0 +1,42 @@
+@import '../shared-styles/colors'
+
+:host
+  display block
+  border-bottom 1px solid ColorBlack
+
+ll-button
+  --ll-button-text-align start
+  --ll-button-fill transparent
+  --ll-button-text-color ColorBlack
+  --ll-button-border-radius 0
+  --ll-button-border-color transparent
+  --ll-button-border-color--active transparent
+  border 1px solid ColorBlack
+  display block
+  margin-bottom -1px
+
+ll-button:hover
+  --ll-button-fill ColorYellow
+
+ll-button[data-opened]
+  border-bottom 0
+  --ll-button-fill ColorYellow
+
+#slotContainer
+  display none
+
+.container
+  background-color ColorYellow
+  overflow hidden
+  height 0px
+  width 100%
+  transition 0.5s height ease
+  box-sizing border-box
+
+.container > *
+  padding 16px
+
+.container[data-opened]
+  height var(--container-height)
+  border-left 1px solid ColorBlack
+  border-right 1px solid ColorBlack
