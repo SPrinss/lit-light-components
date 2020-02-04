@@ -1,12 +1,12 @@
-import { LitElement, html } from 'lit-element';
+import { LitElementLight, html } from 'lit-element-light';
 
 /**
- * Conamore UI Selector Component
+ * Lit light Selector Component
  * @element ll-selector
  * @slot
  * 
 */
-class Main extends LitElement {
+class Main extends LitElementLight {
 
   static get properties() {
     return { 
@@ -90,11 +90,12 @@ class Main extends LitElement {
   }
 
   updated(props) {
+    super.updated(props);
     if(props.has('_children')) this._childrenChanged(this._children, props.get('_children'));
     if(props.has('values') || props.has('_children')) this._valuesChanged();
   }
 
-  render() {
+  get template() {
     return html`
       <slot></slot>
     `;
