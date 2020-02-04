@@ -1,5 +1,4 @@
 import { UpdatingElement } from 'lit-element';
-import { Colors } from '../styles';
 
 /**
  * Conamore UI Icon Component
@@ -33,25 +32,7 @@ class Main extends UpdatingElement {
 
   render(viewboxValue, svgIcon) {
     this._shadowRoot.innerHTML = `
-      <style>
-      :host {
-        display: inline-block;
-        ${Colors}
-        height: var(--ll-icon-size, 24px);
-        width: var(--ll-icon-size, 24px);
-      }
-
-      svg {
-        height: 100%;
-        width: 100%;
-      }
-
-      g {
-        stroke: var(--ll-icon-color, var(--ll-color-black));
-        fill: none;
-      }
-
-      </style>
+      <link rel="stylesheet" href="src/icon/ll-icon.css">
       <svg viewBox="${viewboxValue || '0 0 24 24'}" id="slicesui-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         ${svgIcon}
       </svg>
