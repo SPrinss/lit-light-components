@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElementLight, html } from 'lit-element-light';
 import {unsafeHTML} from 'lit-html/directives/unsafe-html.js';
 import '../button';
 
@@ -12,7 +12,7 @@ import '../button';
  * @fires selected-index-changed - Fires when a list item is opened or closed
  * 
  */
-class Main extends LitElement {
+class Main extends LitElementLight {
 
   static get properties() {
     return {
@@ -29,7 +29,7 @@ class Main extends LitElement {
     };
   }
 
-  render() {
+  get template() {
     return html`
       <link rel="stylesheet" href="./src/accordion/ll-accordion.css">
       ${this.values.map((val, i) => html`
@@ -71,6 +71,7 @@ class Main extends LitElement {
   updated(props) {
     if(props.has('selectedIndex')) this._selectedIndexChanged();
     if(props.has('values')) this._valuesChanged();
+    super.updated(props);
   }
 
   /**
@@ -84,7 +85,7 @@ class Main extends LitElement {
 
   set values(values) {
     const oldVal = this._values;
-    this._values = [...values];
+    this._values = values;
     this.requestUpdate('values', oldVal);
   }
 
