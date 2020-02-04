@@ -89,14 +89,14 @@ export class Main extends LitElementLight {
         @values-changed="${this._valuesChanged}"
       >
         ${this.options.map(item => {
-          return html`
+    return html`
                   <ll-button
                     .label="${item.label}"
                     .value="${item.value}"
                     ?small="${this.small}"
                   ></ll-button>
                 `;
-        })}
+  })}
       </ll-selector>
     `;
   }
