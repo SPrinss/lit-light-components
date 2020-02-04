@@ -1,5 +1,4 @@
-import { LitElement, html, css } from 'lit-element';
-import { Sizings, Gradients, Colors, BodyText, BorderRadius, DropShadows } from '../styles';
+import { LitElementLight, html } from 'lit-element-light';
 import '../icon';
 
 /**
@@ -10,8 +9,7 @@ import '../icon';
  * @cssprop --ll-card-color - Card Text Color
  * 
  */
-
-class Main extends LitElement {
+class Main extends LitElementLight {
 
   static get properties() {
     return { 
@@ -44,60 +42,9 @@ class Main extends LitElement {
     this.imageUrl = 'http://placehold.it/800x450';
   }
 
-  static get styles() {
-    return css`
-      :host {
-        display: flex;
-        flex-direction: column;
-        background: var(--ll-card-fill, var(--ll-color-white));
-        box-sizing: border-box;
-        border-radius: var(--ll-border-radius);
-        overflow: hidden;
-      }
-
-      header {
-        max-height: 300px;
-        flex: 1;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      main {
-        flex: 2;
-        padding: var(--ll-margin--large);
-        color: var(--ll-card-color, var(--ll-color-black));
-      }
-
-      h3 {
-        margin: 0;
-        font-weight: normal;
-      }
-    `;
-  }
-
-  render() {
+  get template() {
     return html`
-      <style>
-        :host {
-          ${BorderRadius}
-          ${Colors}
-          ${Gradients}
-          ${Sizings}
-          ${DropShadows}
-        }
-
-        h3 {
-          ${BodyText}
-        }
-
-        img {
-          width: 100%;
-        }
-      </style>
+      <link rel="stylesheet" href="./src/card/ll-card.css">
 
       <header>
         <img src="${this.imageUrl}">
@@ -108,7 +55,6 @@ class Main extends LitElement {
 
     `;
   }
-
 
 }
 
