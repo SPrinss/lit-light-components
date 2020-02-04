@@ -1,0 +1,20 @@
+@import '../shared-styles/typography.styl'
+@import '../shared-styles/sizings.styl'
+
+:host
+  display block
+  BodyText()
+  padding var(--ll-margin--large, MarginLarge)
+
+::slotted(h1)
+  H1()
+
+::slotted(h1)
+  margin-bottom var(--ll-margin--large, MarginLarge)
+
+main
+  padding var(--ll-margin--large, MarginLarge) 0
+
+footer
+  padding-top var(--ll-margin--large, MarginLarge)
+  padding-bottom var(--ll-margin--xxlarge, MarginXxLarge)
