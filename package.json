@@ -17,7 +17,7 @@
     "start:compatibility": "npm run analyze && es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch"
   },
   "dependencies": {
-    "lit-element-light": "0.0.1"
+    "lit-element-light": "0.0.3"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.0.0",
