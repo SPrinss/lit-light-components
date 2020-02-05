@@ -114,17 +114,8 @@ class Main extends MultiPropertyObserver(LitElementLight) {
   }
 
   _labelChanged(label) {
-    this.noLabel = !label;
-  }
-
-  set noLabel(noLabel) {
-    this._noLabel = noLabel;
-    if(noLabel) this.setAttribute('no-label', '');
+    if(!label) this.setAttribute('no-label', '');
     else this.removeAttribute('no-label');
-  }
-
-  get noLabel() {
-    return this._noLabel;
   }
 
 }
