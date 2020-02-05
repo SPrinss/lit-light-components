@@ -4,7 +4,7 @@
 @import '../shared-styles/shadows.styl'
 @import '../shared-styles/typography.styl'
 
-:host()
+:host
   display block
 
 button 
@@ -35,7 +35,7 @@ button, :host([small]) button
   --ll-icon-color var(--ll-button-text-color, white)
   padding 0 15px
 
-:host([no-label]) 
+:host([no-label])
   width 54px
 
 :host([small][no-label]) 
@@ -51,12 +51,6 @@ button:active
   opacity 0.5
   pointer-events none
   cursor default
-
-:host([disabled]) button 
-  border-color var(--ll-button-border-color--disabled, transparent)
-  background var(--ll-button-fill--disabled, transparent)
-  color var(--ll-button-text-color--disabled, ColorWhite)
-  --ll-icon-color var(--ll-button-text-color--disabled, ColorWhite)
 
 :host([raised]) button 
   box-shadow DropShadow
