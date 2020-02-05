@@ -61,7 +61,7 @@ class Main extends MultiPropertyObserver(LitElementLight) {
      * Text label
      * @type {String}
      */
-    this.label = 'My Button';
+    this.label = '';
 
     /**
      * When `true`, button is not clickable
