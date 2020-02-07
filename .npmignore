@@ -1,0 +1,8 @@
+src/
+/build-scripts
+.DS_Store
+node_modules
+custom-elements.json
+.eslintrc
+index.html
+.editorconfig

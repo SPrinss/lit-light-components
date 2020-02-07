@@ -1,5 +1,5 @@
 # Lit light component library
-Component library build on native browser standards.
+Component library build on native browser standards. See the [repository](https://github.com/SPrinss/lit-light-components) for the source code.
 
 ## Send events
 Send events for every user interaction we might want to track in the parent app.

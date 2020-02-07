@@ -2,3 +2,4 @@
 node_modules
 custom-elements.json
 src/**/*.css
+dist/

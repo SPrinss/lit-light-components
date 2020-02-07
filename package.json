@@ -2,7 +2,7 @@
   "name": "lit-light-components",
   "version": "0.0.1",
   "description": "Component library build on native browser standards",
-  "main": "index.html",
+  "main": "dist/index.js",
   "scripts": {
     "lint:eslint": "eslint --ext .js ./src --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js ./src --fix --ignore-path .gitignore",
@@ -14,21 +14,32 @@
     "local-server": "es-dev-server --app-index index.html --node-resolve --open",
     "local-server:watch": "es-dev-server --app-index index.html --node-resolve --open --watch",
     "start": "npm run analyze && npm run local-server:watch",
-    "start:compatibility": "npm run analyze && es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch"
+    "start:compatibility": "npm run analyze && es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch",
+    "build": "rimraf dist && npm run build:copy-files && npm run build:stylus && npm run build:inline-styles && npm run build:remove-style-files",
+    "build:copy-files": "node './build-scripts/copy-folder.js' --from 'src/' --to 'dist/' --remove 'src'",
+    "build:stylus": "stylus dist/**/*.styl",
+    "build:inline-styles": "node './build-scripts/inline-styles.js' --dir dist --replaceFolder src",
+    "build:remove-style-files": "node './build-scripts/remove-style-files.js' --dir dist/"
   },
   "dependencies": {
     "lit-element-light": "0.0.3"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "api-viewer-element": "^0.2.6",
     "es-dev-server": "^1.5.0",
     "eslint": "^6.6.0",
     "husky": "^3.0.9",
+    "magic-string": "^0.25.6",
     "rollup-plugin-stylesheet-inliner": "^0.1.1",
     "stylus": "^0.54.7",
     "web-component-analyzer": "^0.1.20",
-    "web-component-tester": "^6.9.2"
+    "web-component-tester": "^6.9.2",
+    "rimraf": "^2.6.3",
+    "stylesheet-inliner": "git@github.com:SPrinss/stylesheet-inliner.git"
   },
   "repository": {
     "type": "git",
