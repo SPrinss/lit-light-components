@@ -4,12 +4,25 @@
     <script type="module">
       import 'api-viewer-element';
       import './src/index.js';
-      import './src/icon/ll-icon.js';
     </script>
   </head>
 
+  <style>
+    * {
+      --ll-theme-light: white;
+      --ll-theme-dark: black;
+      --ll-theme-main: #bfbdc7;
+      --ll-theme-highlight:#dede96;
+    }
+    #overview *, button {
+      margin-bottom: 20px;
+    }
+  </style>
+
   <body>
-    <api-viewer src="./custom-elements.json" section="demo" selected="ll-accordion">
+    <button id="toggleButton">Toggle view</button>
+
+    <api-viewer src="./custom-elements.json" section="demo" selected="ll-accordion" id="viewer">
 
       
         <template data-element="ll-icon" data-target="host">
@@ -53,5 +66,33 @@
 
       </api-viewer>
 
+      <ll-page id="overview">
+        <ll-progress-bar slot="header" val="70"></ll-progress-bar>
+        <ll-card slot="body" ></ll-card>
+        <ll-icon  slot="body" icon="arrow-forward"></ll-icon>
+        <ll-text-input slot="body" ></ll-text-input>
+        <ll-checkbox slot="body" ></ll-checkbox>
+        <ll-button slot="body" label="Something"></ll-button>
+        <ll-button-group slot="body" ></ll-button-group>
+        <ll-accordion slot="footer">
+            <article data-accname="A very important question?">Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.</article>
+            <article data-accname="But what if a bird becomes a bee?">Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.</article>
+        </ll-accordion>
+      </ll-page>   
+
+      <script>
+        function toggleView(overviewVisible) {
+          this.overview.style.display = overviewVisible ? 'block' : 'none';
+          this.viewer.style.display = overviewVisible ? 'none' : 'block';
+        }
+
+        var queryParams = new URLSearchParams(window.location.search);
+        var overviewVisible = (queryParams.get('overview') || false) === "true";
+        toggleView(overviewVisible);
+
+        this['toggleButton'].addEventListener('click', () => {
+          toggleView(this.overview.style.display !== 'block');
+        })
+      </script>
 </body>
 </html>
