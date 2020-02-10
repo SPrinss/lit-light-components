@@ -116,7 +116,7 @@ export class Main extends MultiPropertyObserver(LitElementLight) {
 
   get template() {
     return html`
-      <link rel="stylesheet" href="src/text-input/ll-input.css">
+      <link rel="stylesheet" href="src/text-input/ll-text-input.css">
       <input
         type="${this.type}"
         value="${this.value}"
