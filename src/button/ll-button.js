@@ -15,9 +15,6 @@ import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer
  * @cssprop --ll-button-text-color--active - Text Color for active State
  * @cssprop --ll-button-fill--active - Background Color for active State
  * 
- * @cssprop --ll-button-border-color--disabled - Border Color for disabled State
- * @cssprop --ll-button-text-color--disabled - Text Color for disabled State
- * @cssprop --ll-button-fill--disabled - Background Color for disabled State
  */
 class Main extends MultiPropertyObserver(LitElementLight) {
 
