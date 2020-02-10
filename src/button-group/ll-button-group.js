@@ -9,6 +9,17 @@ import '../button';
  * @cssprop --ll-button-group-display - Can be set to `grid` to enable grid view.
  * 
  * @cssprop --ll-button-group-cols - Number of columns when display == `grid`
+ * 
+ * @cssprop --ll-button-group-switch-border-color - Color of border surrounding buttons when switch is true.
+ * 
+ * @cssprop --ll-button-group-border-color - Border Color
+ * @cssprop --ll-button-group-text-color - Text Color
+ * @cssprop --ll-button-group-fill - Background Color
+ * 
+ * @cssprop --ll-button-group-border-color--active - Border Color for active State
+ * @cssprop --ll-button-group-text-color--active - Text Color for active State
+ * @cssprop --ll-button-group-fill--active - Background Color for active State
+ * 
  */
 export class Main extends LitElementLight {
 

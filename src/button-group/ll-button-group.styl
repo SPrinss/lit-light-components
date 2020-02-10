@@ -9,7 +9,7 @@
   --ll-button-group-gap-size MarginMedium
 
 :host([switch]) ll-selector 
-  border 2px solid ColorGreen
+  border 2px solid var(--ll-button-group-selected-border-color, var(--ll-theme-main, ColorGreen))
   padding 0
   border-radius 5px
   overflow hidden
@@ -22,16 +22,16 @@ ll-selector
 
 ll-button 
   --ll-button-border-radius BorderRadiusM
-  --ll-button-text-color ColorBlack
-  --ll-button-text-color--active ColorBlack
-  --ll-button-fill white
+  --ll-button-text-color var(--ll-button-group-text-color, var(--ll-theme-dark, ColorBlack))
+  --ll-button-border-color var(--ll-button-group-border-color, transparent)
+  --ll-button-fill var(--ll-button-group-fill, var(--ll-theme-light, ColorWhite))
   margin 0
 
 :host([switch]) ll-button 
   --ll-border-radius 0        
   margin 0
 
-ll-button.ll-selected 
-  --ll-button-fill Gradient(ColorGreen, ColorBlue)
-  --ll-button-text-color white
-  --ll-button-text-color--active white
+ll-button.ll-selected
+  --ll-button-fill var(--ll-button-group-border-color--active, var(--ll-theme-main, Gradient(ColorGreen, ColorBlue)))
+  --ll-button-text-color var(--ll-button-group-text-color--active, var(--ll-theme-light, ColorWhite))
+  --ll-button-text-color--active var(--ll-button-group-fill--active, var(--ll-theme-main, Gradient(ColorGreen, ColorBlue)))
