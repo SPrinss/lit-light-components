@@ -2,7 +2,7 @@
 
 :host
   display block
-  border-bottom 1px solid ColorBlack
+  border-bottom 1px solid var(--ll-theme-dark, ColorBlack)
 
 ll-button
   --ll-button-text-align start
@@ -11,22 +11,22 @@ ll-button
   --ll-button-border-radius 0
   --ll-button-border-color transparent
   --ll-button-border-color--active transparent
-  border 1px solid ColorBlack
+  border 1px solid var(--ll-theme-dark, ColorBlack)
   display block
   margin-bottom -1px
 
 ll-button:hover
-  --ll-button-fill ColorYellow
+  --ll-button-fill var(--ll-theme-highlight, ColorYellow)
 
 ll-button[data-opened]
   border-bottom 0
-  --ll-button-fill ColorYellow
+  --ll-button-fill var(--ll-theme-highlight, ColorYellow)
 
 #slotContainer
   display none
 
 .container
-  background-color ColorYellow
+  background-color var(--ll-theme-highlight, ColorYellow)
   overflow hidden
   height 0px
   width 100%
@@ -37,5 +37,5 @@ ll-button[data-opened]
 
 .container[data-opened]
   height var(--container-height)
-  border-left 1px solid ColorBlack
-  border-right 1px solid ColorBlack
+  border-left 1px solid var(--ll-theme-dark, ColorDark)
+  border-right 1px solid var(--ll-theme-dark, ColorDark)

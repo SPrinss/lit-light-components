@@ -12,10 +12,10 @@ label
   outline none
 
 ll-button 
-  --ll-button-fill var(--ll-checkbox-fill, white)
-  --ll-button-text-color var(--ll-checkbox-color, ColorGreen)
+  --ll-button-fill var(--ll-checkbox-fill, var(--ll-theme-main, white))
+  --ll-button-text-color var(--ll-checkbox-color, var(--ll-theme-highlight, ColorGreen))
   --ll-button-border-radius BorderRadiusM
-  --ll-button-border-color var(--ll-checkbox-border-color, ColorBlack)
+  --ll-button-border-color var(--ll-checkbox-border-color, var(--ll-theme-dark, ColorBlack))
   display flex
   align-items center
   justify-content center
@@ -25,4 +25,4 @@ label
   padding-left 9px
   user-select none
   cursor pointer
-  color var(--ll-checkbox-color, ColorBlack)
+  color var(--ll-checkbox-color, var(--ll-theme-dark, ColorBlack))

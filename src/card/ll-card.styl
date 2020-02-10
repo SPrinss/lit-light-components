@@ -14,7 +14,7 @@ img
 :host
   display flex
   flex-direction column
-  background var(--ll-card-fill, ColorWhite)
+  background var(--ll-card-fill, var(--ll-theme-light, ColorWhite))
   box-sizing border-box
   border-radius BorderRadiusM
   overflow hidden
@@ -31,7 +31,7 @@ img
 main 
   flex 2
   padding MarginLarge
-  color var(--ll-card-color, ColorBlack)
+  color var(--ll-card-color, var(--ll-theme-dark, ColorBlack))
 
 h3 
   margin 0
