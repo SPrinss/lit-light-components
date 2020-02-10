@@ -14,6 +14,7 @@
     "local-server": "es-dev-server --app-index index.html --node-resolve --open",
     "local-server:watch": "es-dev-server --app-index index.html --node-resolve --open --watch",
     "start": "npm run analyze && npm run local-server:watch",
+    "prepublish": "npm run build",
     "start:compatibility": "npm run analyze && es-dev-server --app-index index.html --compatibility all --node-resolve --open --watch",
     "build": "rimraf dist && npm run build:copy-files && npm run build:stylus && npm run build:inline-styles && npm run build:remove-style-files",
     "build:copy-files": "node './build-scripts/copy-folder.js' --from 'src/' --to 'dist/' --remove 'src'",
