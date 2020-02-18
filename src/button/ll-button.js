@@ -88,14 +88,13 @@ class Main extends MultiPropertyObserver(LitElementLight) {
 
   firstUpdated() {
     this.shadowRoot.addEventListener('slotchange', this._handleSlotChange.bind(this));
-    if(!this.hasAttribute('role')) this.setAttribute('role', 'button');
-    if(!this.hasAttribute('tabindex')) this.setAttribute('tabindex', 0);
   }
 
   get observers() {
     return {
       _iconChanged: ['icon'],
-      _labelChanged: ['label']
+      _labelChanged: ['label'],
+      _disabledChanged: ['disabled']
     };
   }
 
@@ -105,13 +104,25 @@ class Main extends MultiPropertyObserver(LitElementLight) {
     this.removeAttribute('no-label');
   } 
 
-  _iconChanged(icon) {
-    if(icon) import('../icon');
+  _iconChanged() {
+    if(this.icon) import('../icon');
   }
 
-  _labelChanged(label) {
-    if(!label) this.setAttribute('no-label', '');
+  _labelChanged() {
+    if(!this.label) this.setAttribute('no-label', '');
     else this.removeAttribute('no-label');
+  }
+
+  _disabledChanged() {
+    if(this.disabled) {
+      this.removeAttribute('tabindex');
+      this.setAttribute('aria-disabled', 'true');
+    } else {
+      if(!this.hasAttribute('role')) this.setAttribute('role', 'button');
+      if(!this.hasAttribute('tabindex')) this.setAttribute('tabindex', 0);  
+      this.removeAttribute('aria-disabled');
+    }
+
   }
 
 }
