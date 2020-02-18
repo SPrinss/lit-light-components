@@ -40,7 +40,7 @@
     "web-component-analyzer": "^0.1.20",
     "web-component-tester": "^6.9.2",
     "rimraf": "^2.6.3",
-    "stylesheet-inliner": "git@github.com:SPrinss/stylesheet-inliner.git"
+    "stylesheet-inliner": "^0.1.0"
   },
   "repository": {
     "type": "git",

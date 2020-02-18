@@ -1,0 +1,58 @@
+html, body {
+  --ll-color-ground--hue: 40;
+  --ll-color-ground--saturation: 35%;
+
+  --ll-color-main--hue: 50;
+  --ll-color-main--saturation: 93%;
+
+  --ll-color-highlight--hue: 267;
+  --ll-color-highlight--saturation: 100%;
+
+  --ll-color-typography--hue: 0;
+  --ll-color-typography--saturation: 0%;
+
+  --ll-color-ground: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light, 85%));
+  --ll-color-ground--10: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,10%));
+  --ll-color-ground--20: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,20%));
+  --ll-color-ground--30: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,30%));
+  --ll-color-ground--40: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,40%));
+  --ll-color-ground--50: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,50%));
+  --ll-color-ground--60: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,60%));
+  --ll-color-ground--70: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,70%));
+  --ll-color-ground--80: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,80%));
+  --ll-color-ground--90: hsl(var(--ll-color-ground--hue), var(--ll-color-ground--saturation), var(--ll-color-ground--light,90%));
+
+  --ll-color-main: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light, 78%));
+  --ll-color-main--10: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,10%));
+  --ll-color-main--20: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,20%));
+  --ll-color-main--30: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,30%));
+  --ll-color-main--40: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,40%));
+  --ll-color-main--50: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,50%));
+  --ll-color-main--60: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,60%));
+  --ll-color-main--70: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,70%));
+  --ll-color-main--80: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,80%));
+  --ll-color-main--90: hsl(var(--ll-color-main--hue), var(--ll-color-main--saturation), var(--ll-color-main--light,90%));
+
+
+  --ll-color-highlight: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light, 68%));
+  --ll-color-highlight--10: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,10%));
+  --ll-color-highlight--20: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,20%));
+  --ll-color-highlight--30: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,30%));
+  --ll-color-highlight--40: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,40%));
+  --ll-color-highlight--50: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,50%));
+  --ll-color-highlight--60: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,60%));
+  --ll-color-highlight--70: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,70%));
+  --ll-color-highlight--80: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,80%));
+  --ll-color-highlight--90: hsl(var(--ll-color-highlight--hue), var(--ll-color-highlight--saturation), var(--ll-color-highlight--light,90%));
+
+  --ll-color-typography: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light, 0%));
+  --ll-color-typography--10: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,10%));
+  --ll-color-typography--20: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,20%));
+  --ll-color-typography--30: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,30%));
+  --ll-color-typography--40: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,40%));
+  --ll-color-typography--50: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,50%));
+  --ll-color-typography--60: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,60%));
+  --ll-color-typography--70: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,70%));
+  --ll-color-typography--80: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,80%));
+  --ll-color-typography--90: hsl(var(--ll-color-typography--hue), var(--ll-color-typography--saturation), var(--ll-color-typography--light,90%));
+}

@@ -5,37 +5,41 @@ import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer
  * Lit light Button Component
  * @element ll-button
 
- * @cssprop --ll-button-text-align - Text Align
- * 
- * @cssprop --ll-button-border-color - Border Color
- * @cssprop --ll-button-text-color - Text Color
- * @cssprop --ll-button-fill - Background Color
- * 
- * @cssprop --ll-button-border-color--active - Border Color for active State
- * @cssprop --ll-button-text-color--active - Text Color for active State
- * @cssprop --ll-button-fill--active - Background Color for active State
+  * @cssprop --ll-button-background
+  * @cssprop --ll-button-background--focus
+  * @cssprop --ll-button-background--hover
+  * @cssprop --ll-button-background--active
+  * @cssprop --ll-button-background--disabled
+
+  * @cssprop --ll-button-color
+  * @cssprop --ll-button-color--focus
+  * @cssprop --ll-button-color--hover
+  * @cssprop --ll-button-color--active
+  * @cssprop --ll-button-color--disabled
+
+  * @cssprop --ll-button-border-width
+  * @cssprop --ll-button-border-width--focus
+  * @cssprop --ll-button-border-width--hover
+  * @cssprop --ll-button-border-width--active
+  * @cssprop --ll-button-border-width--disabled
+
+  * @cssprop --ll-button-border-color
+  * @cssprop --ll-button-border-color--focus
+  * @cssprop --ll-button-border-color--hover
+  * @cssprop --ll-button-border-color--active
+  * @cssprop --ll-button-border-color--disabled
+
+  * @cssprop --ll-button-border-radius
+  
+  * @cssprop --ll-button-transition-time
  * 
  */
 class Main extends MultiPropertyObserver(LitElementLight) {
 
   static get properties() {
     return { 
-      
-      label: {
-        type: String,
-      },
-      
+
       disabled: {
-        type: Boolean,
-        reflect: true
-      },
-
-      small: {
-        type: Boolean,
-        reflect: true
-      },
-
-      raised: {
         type: Boolean,
         reflect: true
       },
@@ -55,27 +59,10 @@ class Main extends MultiPropertyObserver(LitElementLight) {
     super();
 
     /**
-     * Text label
-     * @type {String}
-     */
-    this.label = '';
-
-    /**
      * When `true`, button is not clickable
      * @type {Boolean}
      */
     this.disabled = false;
-
-    /**
-     * When `true`, button is smaller in size
-     * @type {Boolean}
-     */
-    this.small = false;
-
-    /**
-     * When true, the button has a drop-shadow
-     */
-    this.raised = false;
 
     /**
      * Display an icon (one of `ll-icon`)
@@ -92,11 +79,17 @@ class Main extends MultiPropertyObserver(LitElementLight) {
   get template() {
     return html`
       <link rel="stylesheet" href="./src/button/ll-button.css">
-      <button>
-        <span>${this.label}</span>
+      <button ?disabled="${this.disabled}" .value="${this.value}">
+        <span><slot></slot></span>
         ${this.icon ? html`<ll-icon .icon="${this.icon}"></ll-icon>` : html`` }
       </button>
     `;
+  }
+
+  firstUpdated() {
+    this.shadowRoot.addEventListener('slotchange', this._handleSlotChange.bind(this));
+    if(!this.hasAttribute('role')) this.setAttribute('role', 'button');
+    if(!this.hasAttribute('tabindex')) this.setAttribute('tabindex', 0);
   }
 
   get observers() {
@@ -105,6 +98,12 @@ class Main extends MultiPropertyObserver(LitElementLight) {
       _labelChanged: ['label']
     };
   }
+
+  _handleSlotChange(e) {
+    const noLabel = e.target.assignedNodes().length === 0;
+    if(noLabel) return this.setAttribute('no-label', '');
+    this.removeAttribute('no-label');
+  } 
 
   _iconChanged(icon) {
     if(icon) import('../icon');

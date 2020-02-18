@@ -7,13 +7,11 @@
     </script>
   </head>
 
+  <link rel="stylesheet" href="theme-colors.css">
+  <link rel="stylesheet" href="theme-sizings.css">
+
   <style>
-    * {
-      --ll-theme-light: white;
-      --ll-theme-dark: black;
-      --ll-theme-main: #bfbdc7;
-      --ll-theme-highlight:#dede96;
-    }
+    
     #overview *, button {
       margin-bottom: 20px;
     }
@@ -22,12 +20,14 @@
   <body>
     <button id="toggleButton">Toggle view</button>
 
-    <api-viewer src="./custom-elements.json" section="demo" selected="ll-accordion" id="viewer">
+    <api-viewer src="./custom-elements.json" section="demo" selected="ll-button" id="viewer">
 
       
-        <template data-element="ll-icon" data-target="host">
-          <ll-icon icon="arrow-left"></ll-icon>
-        </template>
+      <template data-element="ll-icon" data-target="host">
+        <ll-icon icon="arrow-left"></ll-icon>
+      </template>
+
+      <template data-element="ll-button" data-target="slot">My Button</template>
 
       <template data-element="ll-accordion">
         <article data-accname="Option one">Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue.</article>

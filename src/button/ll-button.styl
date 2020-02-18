@@ -1,75 +1,67 @@
-@import '../shared-styles/colors.styl'
-@import '../shared-styles/gradients.styl'
-@import '../shared-styles/border-radius.styl'
-@import '../shared-styles/shadows.styl'
 @import '../shared-styles/typography.styl'
 
 :host
-  display block
+  display inline-block
+  height var(--ll-button-height, var(--ll-size--7))
+
+:host([no-label]) button
+  width var(--ll-button-height, var(--ll-size--7))
+  --ll-button-border-radius 50%
 
 button 
   ButtonText()
-  border-radius BorderRadiusM
-  border 2px solid var(--ll-button-border-color, transparent)
-  border-radius var(--ll-button-border-radius, BorderRadiusXl)
-  color var(--ll-button-text-color, var(--ll-theme-light, white))
-  background var(--ll-button-fill, var(--ll-theme-main, Gradient(ColorGreen, ColorBlue)))
+  background var(--ll-button-background, var(--ll-color-highlight--50))
+  color var(--ll-button-color, var(--ll-color-typography--90))
+  border-color var(--ll-button-border-color, var(--ll-color-ground--50))
+  border-radius var(--ll-button-border-radius, var(--ll-border-radius))
+  --ll-icon-color var(--ll-button-color, var(--ll-color-typography--90))
+
   display flex
   justify-content center
   align-items center
   width 100%
-  height 54px
+  height 100%
   outline none
   cursor pointer
   user-select none
-  transition 0.2s box-shadow ease, 0.2s color ease, 0.2s background-color ease
+  transition var(--ll-button-transition-time, var(--ll-transition-time)) all ease
   margin 0
 
-:host([small]) button
-  ButtonText()
-  height 48px
+button:focus
+  background var(--ll-button-background--focus, var(--ll-button-background, var(--ll-color-highlight--50)))
+  color var(--ll-button-color--focus, var(--ll-button-color, var(--ll-color-typography--90)))
+  border-color var(--ll-button-border-color--focus, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  --ll-icon-color var(--ll-button-color--focus, var(--ll-button-color, var(--ll-color-typography--90)))
 
-button, :host([small]) button
-  display flex
-  text-align var(--ll-button-text-align, center)
-  --ll-icon-color var(--ll-button-text-color, var(--ll-theme-light, white))
-  padding 0 15px
-
-:host([no-label])
-  width 54px
-
-:host([small][no-label]) 
-  width 48px
+button:hover
+  background var(--ll-button-background--hover, var(--ll-button-background, var(--ll-color-highlight--40)))
+  color var(--ll-button-color--hover, var(--ll-button-color, var(--ll-color-typography--90)))
+  border-color var(--ll-button-border-color--hover, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  --ll-icon-color var(--ll-button-color--hover, var(--ll-button-color, var(--ll-color-typography--90)))
 
 button:active 
-  border-color var(--ll-button-border-color--active, var(--ll-theme-light, ColorWhite))
-  color var(--ll-button-text-color--active, var(--ll-theme-light, ColorWhite))
-  --ll-icon-color var(--ll-button-text-color--active, var(--ll-theme-light, ColorWhite))
-  background var(--ll-button-fill--active, var(--ll-theme-main, Gradient(ColorGreen, ColorBlue)))
+  background var(--ll-button-background--active, var(--ll-button-background, var(--ll-color-highlight--30)))
+  color var(--ll-button-color--active, var(--ll-button-color, var(--ll-color-typography--90)))
+  border-color var(--ll-button-border-color--active, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  --ll-icon-color var(--ll-button-color--active, var(--ll-button-color, var(--ll-color-typography--90)))
 
-:host([disabled]) 
-  opacity 0.5
+button:disabled
+  background var(--ll-button-background--disabled, var(--ll-button-background, var(--ll-color-highlight--70)))
+  color var(--ll-button-color--disabled, var(--ll-button-color, var(--ll-color-typography--90)))
+  border-color var(--ll-button-border-color--disabled, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  --ll-icon-color var(--ll-button-color--disabled, var(--ll-button-color, var(--ll-color-typography--90)))
   pointer-events none
   cursor default
 
-:host([raised]) button 
-  box-shadow DropShadow
-  border-color transparent
-
-:host([raised]) button:active 
-  border-color var(--ll-button-border-color--active, var(--ll-theme-main-light, transparent))
-  box-shadow none
-  transform translate(0px, 2px)
-  
 span 
   flex 1
   white-space nowrap
   text-overflow ellipsis
   overflow hidden
-  line-height 1.25
+  padding 0 var(--ll-size--3)
 
 span + ll-icon 
-  padding-left 8px
+  padding-left var(--ll-size--2)
 
 ll-icon 
   flex none
