@@ -35,13 +35,11 @@ class Main extends MultiPropertyObserver(LitElementLight) {
       <link rel="stylesheet" href="./src/accordion/ll-accordion.css">
       ${this.values.map((val, i) => html`
         <ll-button
-          small
-          .label="${val}"
           .icon="${i === this.selectedIndex ? 'close' : 'add'}"
           data-index="${i}"
           @click="${this._handleButtonClick}"
           ?data-opened="${i === this.selectedIndex}"
-        ></ll-button>
+        >${val}</ll-button>
         <div
           class="container"
           ?data-opened="${i === this.selectedIndex}"

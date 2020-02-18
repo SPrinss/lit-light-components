@@ -2,40 +2,28 @@
 
 :host
   display block
-  border-bottom 1px solid var(--ll-theme-dark, ColorBlack)
 
 ll-button
   --ll-button-text-align start
-  --ll-button-fill transparent
-  --ll-button-text-color ColorBlack
-  --ll-button-border-radius 0
-  --ll-button-border-color transparent
-  --ll-button-border-color--active transparent
-  border 1px solid var(--ll-theme-dark, ColorBlack)
+  --ll-button-background var(--ll-accordion-button-background, var(--ll-color-ground--90))
+  --ll-button-background--hover var(--ll-accordion-button-background--hover, var(--ll-color-ground--80))
+  --ll-button-background--active var(--ll-accordion-button-background--active, var(--ll-color-ground--80))
+  --ll-button-color var(--ll-accordion-button-color, var(--ll-color-typography--10))
   display block
-  margin-bottom -1px
-
-ll-button:hover
-  --ll-button-fill var(--ll-theme-highlight, ColorYellow)
-
-ll-button[data-opened]
-  border-bottom 0
-  --ll-button-fill var(--ll-theme-highlight, ColorYellow)
 
 #slotContainer
   display none
 
 .container
-  background-color var(--ll-theme-highlight, ColorYellow)
+  background var(--ll-accordion-item-background, var(--ll-color-ground--90))
   overflow hidden
   height 0px
   width 100%
   box-sizing border-box
+  margin-bottom var(--ll-accordion-item-margin-bottom, var(--ll-size--1))
 
 .container > *
-  padding 16px
+  padding var(--ll-accordion-item-padding, var(--ll-size--4))
 
 .container[data-opened]
   height var(--container-height)
-  border-left 1px solid var(--ll-theme-dark, ColorDark)
-  border-right 1px solid var(--ll-theme-dark, ColorDark)

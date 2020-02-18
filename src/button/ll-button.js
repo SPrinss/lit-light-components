@@ -30,8 +30,8 @@ import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer
   * @cssprop --ll-button-border-color--disabled
 
   * @cssprop --ll-button-border-radius
-  
   * @cssprop --ll-button-transition-time
+  * @cssprop --ll-button-text-align
  * 
  */
 class Main extends MultiPropertyObserver(LitElementLight) {
