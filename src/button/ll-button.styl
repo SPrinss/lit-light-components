@@ -12,8 +12,9 @@ button
   ButtonText()
   background var(--ll-button-background, var(--ll-color-highlight--50))
   color var(--ll-button-color, var(--ll-color-typography--90))
-  border-width var(--ll-button-border-width, 0)
-  border-color var(--ll-button-border-color, var(--ll-color-ground--0))
+  border-width var(--ll-button-border-width, var(--ll-border-width, 0))
+  border-color var(--ll-button-border-color, var(--ll-color-ground--80))
+  border-style solid
   border-radius var(--ll-button-border-radius, var(--ll-border-radius))
   text-align var(--ll-button-text-align, center)
   --ll-icon-color var(--ll-button-color, var(--ll-color-typography--90))
@@ -25,38 +26,33 @@ button
   height 100%
   margin 0
   padding 0 var(--ll-size--3)
-  outline none
   cursor pointer
   user-select none
   transition var(--ll-button-transition-time, var(--ll-transition-time)) all ease
-  border var(--ll-button-border-width) solid  var(--ll-button-border-color)
 
 button:focus
-  background var(--ll-button-background--focus, var(--ll-button-background, var(--ll-color-highlight--50)))
-  color var(--ll-button-color--focus, var(--ll-button-color, var(--ll-color-typography--90)))
-  border-width var(--ll-button-border-width--focus, var(--ll-button-border-width, 0))
-  border-color var(--ll-button-border-color--focus, var(--ll-button-border-color, var(--ll-color-ground--50)))
-  --ll-icon-color var(--ll-button-color--focus, var(--ll-button-color, var(--ll-color-typography--90)))
+  background var(--ll-button-background--focus, var(--ll-button-background--hover, var(--ll-button-background, var(--ll-color-highlight--50))))
+  color var(--ll-button-color--focus, var(--ll-button-color--hover, var(--ll-button-color, var(--ll-color-typography--90))))
+  border-color var(--ll-button-border-color--focus, var(--ll-button-border-color, var(--ll-color-ground--80)))
+  --ll-icon-color var(--ll-button-color--focus, var(--ll-button-color--hover, var(--ll-button-color, var(--ll-color-typography--90))))
+  outline none
 
 button:hover
   background var(--ll-button-background--hover, var(--ll-button-background, var(--ll-color-highlight--40)))
   color var(--ll-button-color--hover, var(--ll-button-color, var(--ll-color-typography--90)))
-  border-width var(--ll-button-border-width--hover, var(--ll-button-border-width, 0))
-  border-color var(--ll-button-border-color--hover, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  border-color var(--ll-button-border-color--hover, var(--ll-button-border-color, var(--ll-color-ground--80)))
   --ll-icon-color var(--ll-button-color--hover, var(--ll-button-color, var(--ll-color-typography--90)))
 
 button:active 
   background var(--ll-button-background--active, var(--ll-button-background, var(--ll-color-highlight--30)))
   color var(--ll-button-color--active, var(--ll-button-color, var(--ll-color-typography--90)))
-  border-width var(--ll-button-border-width--active, var(--ll-button-border-width, 0))
-  border-color var(--ll-button-border-color--active, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  border-color var(--ll-button-border-color--active, var(--ll-button-border-color, var(--ll-color-ground--80)))
   --ll-icon-color var(--ll-button-color--active, var(--ll-button-color, var(--ll-color-typography--90)))
 
 button:disabled
   background var(--ll-button-background--disabled, var(--ll-button-background, var(--ll-color-highlight--70)))
   color var(--ll-button-color--disabled, var(--ll-button-color, var(--ll-color-typography--90)))
-  border-width var(--ll-button-border-width--disabled, var(--ll-button-border-width, 0))
-  border-color var(--ll-button-border-color--disabled, var(--ll-button-border-color, var(--ll-color-ground--50)))
+  border-color var(--ll-button-border-color--disabled, var(--ll-button-border-color, var(--ll-color-ground--90)))
   --ll-icon-color var(--ll-button-color--disabled, var(--ll-button-color, var(--ll-color-typography--90)))
   pointer-events none
   cursor default

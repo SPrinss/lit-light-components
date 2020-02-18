@@ -18,10 +18,6 @@ import { MultiPropertyObserver } from 'lit-element-light/multi-property-observer
   * @cssprop --ll-button-color--disabled
 
   * @cssprop --ll-button-border-width
-  * @cssprop --ll-button-border-width--focus
-  * @cssprop --ll-button-border-width--hover
-  * @cssprop --ll-button-border-width--active
-  * @cssprop --ll-button-border-width--disabled
 
   * @cssprop --ll-button-border-color
   * @cssprop --ll-button-border-color--focus
@@ -79,7 +75,7 @@ class Main extends MultiPropertyObserver(LitElementLight) {
   get template() {
     return html`
       <link rel="stylesheet" href="./src/button/ll-button.css">
-      <button ?disabled="${this.disabled}" .value="${this.value}">
+      <button ?disabled="${this.disabled}" .value="${this.value}" tabindex="0">
         <span><slot></slot></span>
         ${this.icon ? html`<ll-icon .icon="${this.icon}"></ll-icon>` : html`` }
       </button>
@@ -119,7 +115,6 @@ class Main extends MultiPropertyObserver(LitElementLight) {
       this.setAttribute('aria-disabled', 'true');
     } else {
       if(!this.hasAttribute('role')) this.setAttribute('role', 'button');
-      if(!this.hasAttribute('tabindex')) this.setAttribute('tabindex', 0);  
       this.removeAttribute('aria-disabled');
     }
 
