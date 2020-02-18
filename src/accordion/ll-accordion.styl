@@ -11,19 +11,22 @@ ll-button
   --ll-button-color var(--ll-accordion-button-color, var(--ll-color-typography--10))
   display block
 
+ll-button[data-opened]
+  --ll-button-text-align start
+  --ll-button-background var(--ll-accordion-button-background--open, var(--ll-button-background--active, var(--ll-color-ground--90)))
+  --ll-button-color var(--ll-accordion-button-color--open, var(--ll-button-color--active, var(--ll-color-typography--10)))
+
 #slotContainer
   display none
 
 .container
-  background var(--ll-accordion-item-background, var(--ll-color-ground--90))
-  overflow hidden
-  height 0px
-  width 100%
   box-sizing border-box
+  width 100%
+  max-height var(--container-height, 0)
+  background var(--ll-accordion-item-background, var(--ll-color-ground--90))
   margin-bottom var(--ll-accordion-item-margin-bottom, var(--ll-size--1))
+  overflow hidden
+  transition max-height 0.2s ease-out
 
 .container > *
   padding var(--ll-accordion-item-padding, var(--ll-size--4))
-
-.container[data-opened]
-  height var(--container-height)

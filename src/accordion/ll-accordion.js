@@ -64,7 +64,10 @@ class Main extends MultiPropertyObserver(LitElementLight) {
 
     this._children = [];
 
-    this.shadowRoot.addEventListener('slotchange', this._childrenChanged.bind(this));
+    this.shadowRoot.addEventListener('slotchange', this._handleSlotChange.bind(this));
+
+    const resizeObserver = new ResizeObserver(this._handleResize.bind(this));
+    resizeObserver.observe(this);
   }
 
   get observers() {
@@ -89,7 +92,16 @@ class Main extends MultiPropertyObserver(LitElementLight) {
     this.requestUpdate('values', oldVal);
   }
 
-  _childrenChanged(e) {
+  _handleResize() {
+    const oldWidth = this._offsetWidth || 0;
+    this._offsetWidth = this.offsetWidth;
+    const widthChanged = this._offsetWidth !== oldWidth;
+    if(!widthChanged) return;
+    window.clearTimeout(this._resizeDebouncer);
+    this._resizeDebouncer = window.setTimeout(this._setContainerHeights.bind(this), 100);
+  }
+
+  _handleSlotChange(e) {
     const children = e.target.assignedNodes().filter(item => item.dataset && !!item.dataset.accname);
     const values = children.map(item => item.dataset.accname);
     this.values = [...values];
@@ -103,20 +115,22 @@ class Main extends MultiPropertyObserver(LitElementLight) {
 
   _valuesChanged() {
     this.dispatchEvent(new CustomEvent('values-changed', {detail: {value: this.values}}));
-    this._setOpenedContainerHeight();
   }
 
   _selectedIndexChanged() {
     this.dispatchEvent(new CustomEvent('selected-index-changed', {detail: {value: this.selectedIndex}}));
-    this._setOpenedContainerHeight();
+    this._setContainerHeights();
   }
 
-  _setOpenedContainerHeight() {
-    const $container = this.shadowRoot.querySelector('.container[data-opened]');
-    if(!$container) return;
-    const contentElement = $container.children[0];
-    const contentHeight = contentElement.offsetHeight;
-    this.style.setProperty('--container-height', contentHeight + 'px');
+  _setContainerHeights() {
+    console.info('set container heights');
+    const btns = this.shadowRoot.querySelectorAll('ll-button');
+    if(!btns) return;
+    btns.forEach(btn => {
+      const container = btn.nextElementSibling;
+      const height = (btn.dataset.index == this.selectedIndex) ? container.scrollHeight + 'px' : 0;
+      container.style.setProperty('--container-height', height);  
+    });
   }
 
 }
