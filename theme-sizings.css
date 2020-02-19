@@ -6,23 +6,21 @@ html, body {
   --ll-size--3: calc( var(--ll-size-base) * 3);
   --ll-size--4: calc( var(--ll-size-base) * 4);
   --ll-size--5: calc( var(--ll-size-base) * 6);
-  --ll-size--5: calc( var(--ll-size-base) * 6);
   --ll-size--6: calc( var(--ll-size-base) * 8);
   --ll-size--7: calc( var(--ll-size-base) * 12);
   --ll-size--8: calc( var(--ll-size-base) * 16);
-  --ll-size--9: calc( var(--ll-size-base) * 16);
-  --ll-size--10: calc( var(--ll-size-base) * 24);
-  --ll-size--11: calc( var(--ll-size-base) * 32);
-  --ll-size--12: calc( var(--ll-size-base) * 48);
-  --ll-size--13: calc( var(--ll-size-base) * 64);
-  --ll-size--14: calc( var(--ll-size-base) * 96);
-  --ll-size--15: calc( var(--ll-size-base) * 128);
-  --ll-size--16: calc( var(--ll-size-base) * 160);
-  --ll-size--17: calc( var(--ll-size-base) * 192);
-  --ll-size--18: calc( var(--ll-size-base) * 256);
-  --ll-size--29: calc( var(--ll-size-base) * 320);
-  --ll-size--20: calc( var(--ll-size-base) * 360);
-  --ll-size--21: calc( var(--ll-size-base) * 400);
-  --ll-size--22: calc( var(--ll-size-base) * 480);
+  --ll-size--9: calc( var(--ll-size-base) * 24);
+  --ll-size--10: calc( var(--ll-size-base) * 32);
+  --ll-size--11: calc( var(--ll-size-base) * 48);
+  --ll-size--12: calc( var(--ll-size-base) * 64);
+  --ll-size--13: calc( var(--ll-size-base) * 96);
+  --ll-size--14: calc( var(--ll-size-base) * 128);
+  --ll-size--15: calc( var(--ll-size-base) * 160);
+  --ll-size--16: calc( var(--ll-size-base) * 192);
+  --ll-size--17: calc( var(--ll-size-base) * 256);
+  --ll-size--18: calc( var(--ll-size-base) * 320);
+  --ll-size--19: calc( var(--ll-size-base) * 360);
+  --ll-size--20: calc( var(--ll-size-base) * 400);
+  --ll-size--21: calc( var(--ll-size-base) * 480);
 
 }
